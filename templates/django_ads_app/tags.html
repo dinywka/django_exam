@@ -1,0 +1,17 @@
+{% extends "components/base.html" %}
+{% load filters_and_tags %}
+
+{% block main %}
+    <h1>The list of users:</h1>
+    <ul>
+        {% for user in user_list %}
+            {% with username=user.username %}
+                {% if username|first == "d" %}
+                    <li>
+                        {% text_upper_case user.username|format_string %}
+                    </li>
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </ul>
+{% endblock main %}
