@@ -12,7 +12,7 @@ class Post(models.Model):
     date_time = models.DateTimeField(default=now, verbose_name="Дата и время подачи")
 
     class Meta:
-        app_label = "blog_app"
+        app_label = "django_ads_app"
         ordering = ("-is_active", "title")
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
@@ -27,7 +27,7 @@ class Comment(models.Model):
     date_time = models.DateTimeField("Дата и время создания", default=now)
 
     class Meta:
-        app_label = "blog_app"
+        app_label = "django_ads_app"
         ordering = ("-date_time", "post")
         verbose_name = "Комментарий к посту"
         verbose_name_plural = "Комментарии к постам"
@@ -57,6 +57,13 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"<UserProfile {self.user.username}>"
+
+class User(models.Model):
+    username = models.CharField(max_length=100)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.username
 
 
 
